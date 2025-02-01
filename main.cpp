@@ -138,18 +138,19 @@ void insertKey()
                 int number;
                 cout << "Introduce o nota: ";
                 cin >> number;
-                if (nrNote > 1)
+                if (nrNote > 0)
                 {
                     for (i = 0; i < nrNote; i++)
                     {
                         if (note[i] == number)
                         {
-                            cout << "Nota " << number << " a fost gasita pe pozitia [interger] " << i << endl << endl;
+                            cout << "Nota " << number << " a fost gasita pe pozitia " << i + 1 << endl << endl;
                             break;
                         }
+                        cout << "Nota " << number << " nu a fost gasita!" << endl << endl;
                     }
                 }
-                else cout << "Nu exista minim 2 note!" << endl << endl;
+                else cout << "Nu exista nicio nota!" << endl << endl;
                 insertKey();
                 break;
             }
@@ -164,7 +165,8 @@ void insertKey()
                     {
                         if (note[i] == number) amount++;
                     }
-                    cout << "Nota " << number << " a fost gasita de " << amount << " ori." << endl << endl;
+                    if (amount == 1) cout << "Nota " << number << " a fost gasita de " << amount << " data." << endl << endl;
+                     else cout << "Nota " << number << " a fost gasita de " << amount << " ori." << endl << endl;
                 }
                 else cout << "Nu exista minim 2 note!" << endl << endl;
                 insertKey();
@@ -173,15 +175,16 @@ void insertKey()
         case 9:
             {
                 int pos;
-                cout << endl << "Introduce pozitia notei[interger]: ";
+                cout << endl << "Introduce pozitia notei: ";
                 cin >> pos;
+                pos--;
                 for (i = pos; i < nrNote; i++)
                 {
                     note[i] = note[i+1];
                 }
                 note[nrNote-1] = 0;
                 nrNote--;
-                cout << "Nota salvata." << endl << endl;
+                cout << "Nota stearsa." << endl << endl;
                 insertKey();
                 break;
             }
@@ -204,7 +207,7 @@ void insertKey()
                         }
                         nrNote--;
                     }
-                    cout << "Ok." << endl << endl;
+                    cout << "Operatiune finalizata." << endl << endl;
                 }
                 else cout << "Nu exista nicio nota!" << endl << endl;
                 insertKey();
